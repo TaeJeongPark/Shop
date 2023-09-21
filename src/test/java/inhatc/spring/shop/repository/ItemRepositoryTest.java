@@ -59,11 +59,12 @@ class ItemRepositoryTest {
 
     public void createItemList() {
 
-        for (int i = 1; i <= 10; i++) {
+        for (int i = 1; i <= 200; i++) {
             Item item = Item.builder()
                     .itemNm("테스트 상품" + i)
                     .price(10000 + i)
                     .itemDetail("테스트 상품 상세 설명" + i)
+                    .stockNumber(i)
                     .itemSellStatus(ItemSellStatus.SELL)
                     .regTime(LocalDateTime.now())
                     .updateTime(LocalDateTime.now())
@@ -154,6 +155,55 @@ class ItemRepositoryTest {
                 .fetch();
 
         itemList.forEach(item -> System.out.println(item));
+
+    }
+
+    @Test
+    @DisplayName("query method Greater Than Equal And Like 테스트")
+    public void findByStockNumberGreaterThanEqualAndItemNmLikeTest() {
+
+        createItemList();
+        itemRepository
+                .findByStockNumberGreaterThanEqualAndItemNmLike(160, "%5%")
+                .forEach(item -> System.out.println(item));
+
+    }
+
+    @Test
+    @DisplayName("JPQL Greater Than Equal And Like 테스트")
+    public void findByStockAndNameTest() {
+
+        createItemList();
+        itemRepository
+                .findByStockAndName(160, "%5%")
+                .forEach(item -> System.out.println(item));
+
+    }
+
+    @Test
+    @DisplayName("Native Greater Than Equal And Like 테스트")
+    public void findByStockAndNameNativeTest() {
+
+        createItemList();
+        itemRepository
+                .findByStockAndNameNative(160, "%5%")
+                .forEach(item -> System.out.println(item));
+
+    }
+
+    @Test
+    @DisplayName("querydsl Greater Than Equal And Like 테스트")
+    public void findByStockAndNameQuerydslTest() {
+
+        createItemList();
+
+        JPAQueryFactory query = new JPAQueryFactory(em);
+
+        QItem qItem = QItem.item;
+        query.selectFrom(qItem)
+                .where(qItem.stockNumber.goe(160))
+                .where(qItem.itemNm.like("%" + "5" + "%"))
+                .fetch().forEach(item -> System.out.println(item));
 
     }
 
