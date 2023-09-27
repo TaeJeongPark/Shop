@@ -33,4 +33,12 @@ public interface ItemRepository extends JpaRepository<Item, Long>, QuerydslPredi
     @Query(value = "SELECT * FROM item i WHERE i.item_detail LIKE %:itemDetail% ORDER BY i.price DESC", nativeQuery = true)
     List<Item> findByDetailNative(@Param("itemDetail") String itemDetail);
 
+    List<Item> findByStockNumberGreaterThanEqualAndItemNmLike(int stockNumber, String itemNm);
+
+    @Query("SELECT i FROM Item i WHERE i.stockNumber >= :stockNumber AND i.itemNm LIKE %:itemNm%")
+    List<Item> findByStockAndName(@Param("stockNumber") int stockNumber, @Param("itemNm") String itemNm);
+
+    @Query(value = "SELECT * FROM Item i WHERE i.stock_number >= :stockNumber AND i.item_nm LIKE %:itemNm%", nativeQuery = true)
+    List<Item> findByStockAndNameNative(@Param("stockNumber") int stockNumber, @Param("itemNm") String itemNm);
+
 }
