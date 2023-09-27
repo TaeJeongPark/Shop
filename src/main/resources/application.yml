@@ -10,14 +10,14 @@ spring:
   application:
     name: spring-shop           # 프로젝트명 설정
 
-    devtools:
-      livereload:
-        enabled: true           # 자동 리로드 설정
-      restart:
-        enabled: true           # 자동 재실행 설정
+  devtools:
+    livereload:
+      enabled: true           # 자동 리로드 설정
+    restart:
+      enabled: true           # 자동 재실행 설정
 
-      thymeleaf:
-        cache: false            # 캐쉬 없음
+  thymeleaf:
+    cache: false            # 캐쉬 없음
 
 ####################################
 # MySQL 설정

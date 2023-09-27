@@ -3,6 +3,7 @@ package inhatc.spring.shop.repository;
 import inhatc.spring.shop.entity.Item;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.querydsl.QuerydslPredicateExecutor;
 import org.springframework.data.repository.query.Param;
 
 import java.util.List;
@@ -18,7 +19,7 @@ import java.util.List;
  * -----------------------------------------------------------
  * 2023-09-13        TaeJeongPark       최초 생성
  */
-public interface ItemRepository extends JpaRepository<Item, Long> {
+public interface ItemRepository extends JpaRepository<Item, Long>, QuerydslPredicateExecutor<Item> {
 
     List<Item> findByItemNm(String itemNm);
 
