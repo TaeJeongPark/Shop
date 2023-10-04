@@ -20,16 +20,23 @@ import java.awt.*;
  * -----------------------------------------------------------
  * 2023-09-06        TaeJeongPark       최초 생성
  */
-@RestController
+@Controller
 public class HelloController {
 
+//    @GetMapping("/")
+//    public UserDto hello() {
+//        UserDto userDto = new UserDto().builder().age(10).build();
+//        userDto.setAge(20);
+//        userDto.setName("홍길동");
+//        System.out.println("userDto : " + userDto);
+//        return userDto;
+//    }
+
     @GetMapping("/")
-    public UserDto hello() {
-        UserDto userDto = new UserDto().builder().age(10).build();
-        userDto.setAge(20);
-        userDto.setName("홍길동");
-        System.out.println("userDto : " + userDto);
-        return userDto;
+    public String index() {
+
+        return "index";
+
     }
 
 }
