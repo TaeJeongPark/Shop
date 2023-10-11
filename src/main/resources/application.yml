@@ -2,13 +2,13 @@
 # 포트 설정
 ####################################
 server:
-  port: 80                      # 포트 설정
+  port: 80                    # 포트 설정
 #  servlet:
 #    context-path: /a    # http://localhost/a 를 기본 경로로 설정
 
 spring:
   application:
-    name: spring-shop           # 프로젝트명 설정
+    name: spring-shop         # 프로젝트명 설정
 
   devtools:
     livereload:
@@ -17,7 +17,12 @@ spring:
       enabled: true           # 자동 재실행 설정
 
   thymeleaf:
-    cache: false            # 캐쉬 없음
+    cache: false              # 캐쉬 없음
+
+  security:
+    user:
+      name: test@test.com
+      password: 1111
 
 ####################################
 # MySQL 설정
