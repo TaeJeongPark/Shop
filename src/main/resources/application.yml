@@ -39,7 +39,7 @@ spring:
   jpa:
     open-in-view: true
     hibernate:
-      ddl-auto: create      # create(처음에 만들 때), update(개발 중에), validate(운영할 때), none, create-drop
+      ddl-auto: update      # create(처음에 만들 때), update(개발 중에), validate(운영할 때), none, create-drop
       naming:
         physical-strategy: org.hibernate.boot.model.naming.CamelCaseToUnderscoresNamingStrategy # 카멜표기를 스네이크표기로 변환
     show-sql: true          # SQL 구문 보이기

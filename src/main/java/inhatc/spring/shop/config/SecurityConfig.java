@@ -2,7 +2,6 @@ package inhatc.spring.shop.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -28,8 +27,25 @@ public class SecurityConfig {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 
         // 보안 설정
-        http.logout(Customizer.withDefaults());
-        http.formLogin(Customizer.withDefaults());
+        http.formLogin(form -> form
+                .loginPage("/member/login")
+                .defaultSuccessUrl("/")
+                .failureForwardUrl("/member/login/error")
+                .usernameParameter("email")
+                .passwordParameter("password")
+                .permitAll());
+
+//        http.logout(Customizer.withDefaults());
+//
+//        // 접근 제어
+//        http.authorizeHttpRequests(request -> request
+//                .requestMatchers("/css/**").permitAll()             // CSS 접근 허용
+//                .requestMatchers("/", "/member/**").permitAll()   // 접근 허용할 페이지 지정
+//                .anyRequest().authenticated());                       // 허용되지 않은 모든 페이지는 인가 없이 접근 불가능
+//
+//        // 에러 핸들링
+//        http.exceptionHandling(exception -> exception
+//                .authenticationEntryPoint(new CustomAuthenticationEntryPoint()));
 
         return http.build();
 
