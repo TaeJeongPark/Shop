@@ -58,7 +58,7 @@ public class MemberController {
             memberService.saveMember(member);
         } catch(IllegalStateException e) {
             model.addAttribute("errorMessage", e.getMessage());
-            return "/member/memberForm";
+            return "member/memberForm";
         }
 
         return "redirect:/";
@@ -93,6 +93,13 @@ public class MemberController {
         }
 
         return "redirect:/";
+
+    }
+
+    @GetMapping("/admin/item/new")
+    public String adminItemForm() {
+
+        return "admin/itemForm";
 
     }
 

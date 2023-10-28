@@ -46,6 +46,7 @@ dependencies {
     annotationProcessor 'org.projectlombok:lombok'                              // 어노테이션 관리하는 롬복
 
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testImplementation 'org.springframework.security:spring-security-test'
 
     // querydsl 추가 2
 //    implementation group: 'com.querydsl', name: 'querydsl-jpa', version: '5.0.0'

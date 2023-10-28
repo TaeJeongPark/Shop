@@ -50,7 +50,7 @@ public class Member {
                 .email(memberFormDto.getEmail())
                 .password(passwordEncoder.encode(memberFormDto.getPassword()))
                 .address(memberFormDto.getAddress())
-                .role(Role.USER)
+                .role(Role.ADMIN)
                 .build();
 
         return member;

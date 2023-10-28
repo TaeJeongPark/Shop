@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/layout1}">
+
+<th:block layout:fragment="css">
+  <style>
+    .filedError {
+      color: red;
+    }
+  </style>
+</th:block>
+
+<th:block layout:fragment="script">
+  <script th:inline="javascript">
+    $(document).ready(function(){
+      var errorMessage = [[${errorMessage}]];
+      if(errorMessage != null) {
+        alert(errorMessage);
+      }
+    })
+  </script>
+</th:block>
+
+<div layout:fragment="content">
+  <form action="/member/new" role="form" method="post"  th:object="${memberFormDto}">
+    <div class="form-group mb-3">
+      <h3>상품 등록 페이지</h3>
+    </div>
+  </form>
+</div>
+</html>
