@@ -43,6 +43,7 @@ public class Order {
     @Enumerated(EnumType.STRING)
     private OrderStatus orderStatus;        // 주문 상태
 
+    @Builder.Default
     @OneToMany(mappedBy = "order", fetch = FetchType.LAZY)
     private List<OrderItem> orderItems = new ArrayList<>();     // 주문 상품
 
