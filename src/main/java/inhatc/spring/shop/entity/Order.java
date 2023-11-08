@@ -43,8 +43,7 @@ public class Order {
     @Enumerated(EnumType.STRING)
     private OrderStatus orderStatus;        // 주문 상태
 
-    @Builder.Default
-    @OneToMany(mappedBy = "order", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)   // cascade = CascadeType.ALL로 영속성 전이 옵션 설정, orphanRemoval = true로 부모 엔티티가 제거되면 자식 엔티티도 제거
+    @OneToMany(mappedBy = "order", fetch = FetchType.LAZY)
     private List<OrderItem> orderItems = new ArrayList<>();     // 주문 상품
 
 }
