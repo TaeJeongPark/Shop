@@ -96,11 +96,11 @@ public class MemberController {
 
     }
 
-    @GetMapping("/admin/item/new")
-    public String adminItemForm() {
-
-        return "admin/itemForm";
-
-    }
+//    @GetMapping("/admin/item/new")
+//    public String adminItemForm() {
+//
+//        return "admin/itemForm";
+//
+//    }
 
 }
