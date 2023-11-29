@@ -19,7 +19,7 @@ import java.util.List;
  * -----------------------------------------------------------
  * 2023-09-13        TaeJeongPark       최초 생성
  */
-public interface ItemRepository extends JpaRepository<Item, Long>, QuerydslPredicateExecutor<Item> {
+public interface ItemRepository extends JpaRepository<Item, Long>, QuerydslPredicateExecutor<Item>, ItemRepositoryCustom {       // ItemRepositoryCustom - 검색기능 추가 {
 
     List<Item> findByItemNm(String itemNm);
 
